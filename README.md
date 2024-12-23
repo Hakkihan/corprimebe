@@ -5,88 +5,100 @@
 [circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
 [circleci-url]: https://circleci.com/gh/nestjs/nest
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg" alt="Donate us"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow" alt="Follow us on Twitter"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+ Data WebSocket Gateway
+Overview
+This project is a WebSocket-based application built using NestJS and Socket.IO. It allows clients to subscribe to real-time data streams for random numbers and Bitcoin prices, with updates sent at regular intervals.
 
-## Description
+Features:
+Real-time random number generation: Clients can subscribe to receive random numbers at regular intervals.
+Bitcoin price updates: Clients can subscribe to receive live Bitcoin price data fetched from an external API.
+WebSocket communication: The app uses WebSocket to deliver real-time updates to subscribed clients.
+Architecture:
+Gateway: Handles WebSocket connections and messages between clients and the backend.
+Service: Contains the logic for generating random numbers and fetching Bitcoin price data.
+Model: Manages the data and interactions with external APIs or databases.
+Technologies
+NestJS: A framework for building scalable and maintainable server-side applications.
+Socket.IO: A library for real-time, bidirectional communication between the server and client.
+RxJS: Used for reactive programming and managing streams of data.
+TypeScript: For strong typing and better development experience.
+Installation and Setup
+Prerequisites:
+Node.js (version 16 or higher)
+npm (Node Package Manager) or yarn
+Steps to Run Locally:
+Clone the Repository:
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+bash
+Copy code
+git clone https://github.com/your-username/your-repository-name.git
+Install Dependencies: Navigate to the project directory and install dependencies:
 
-## Project setup
+bash
+Copy code
+cd your-repository-name
+npm install
+# or
+yarn install
+Configure Environment Variables: Create a .env file in the root of the project and configure the necessary environment variables. An example .env file might look like this:
 
-```bash
-$ npm install
-```
+plaintext
+Copy code
+COINGECKO_URL=https://api.coingecko.com/api/v3
+SOCKET_PORT=3000
+Run the Application: Start the NestJS server in development mode:
 
-## Compile and run the project
+bash
+Copy code
+npm run start:dev
+# or
+yarn start:dev
+The server will be available at http://localhost:3000.
 
-```bash
-# development
-$ npm run start
+Test the WebSocket Connection:
 
-# watch mode
-$ npm run start:dev
+Open a WebSocket client or browser console and connect to the WebSocket server at ws://localhost:3000/data.
+Subscribe to the random number stream:
+js
+Copy code
+socket.emit('subscribeRandomNumber');
+socket.on('randomNumber', (data) => {
+  console.log(data);
+});
+Subscribe to the Bitcoin price stream:
+js
+Copy code
+socket.emit('subscribeBitcoinPrice');
+socket.on('bitcoinPrice', (data) => {
+  console.log(data);
+});
+Deployment
+You can deploy this application to a cloud service like Heroku, AWS, Vercel, or DigitalOcean.
 
-# production mode
-$ npm run start:prod
-```
+Deployment Steps:
+Set up environment variables on your cloud provider. This includes API URLs and any other secrets you need.
 
-## Run tests
+Deploy:
 
-```bash
-# unit tests
-$ npm run test
+For Heroku:
+Push the project to your GitHub repository.
+Connect your GitHub repository to Heroku, and deploy the application.
+For AWS:
+Use AWS Lambda or EC2, and configure environment variables and the WebSocket service accordingly.
+For Vercel or Netlify:
+These platforms provide automated deployment from GitHub repositories. Set the appropriate environment variables in the platform’s dashboard.
+Production Configuration:
+CORS: In the production environment, ensure that your WebSocket server has the correct CORS settings to allow communication between the client and server.
+WebSocket Events
+The WebSocket server supports the following events:
 
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
-```
-
-## Deployment
-
-When you're ready to deploy your NestJS application to production, there are some key steps you can take to ensure it runs as efficiently as possible. Check out the [deployment documentation](https://docs.nestjs.com/deployment) for more information.
-
-If you are looking for a cloud-based platform to deploy your NestJS application, check out [Mau](https://mau.nestjs.com), our official platform for deploying NestJS applications on AWS. Mau makes deployment straightforward and fast, requiring just a few simple steps:
-
-```bash
-$ npm install -g mau
-$ mau deploy
-```
-
-With Mau, you can deploy your application in just a few clicks, allowing you to focus on building features rather than managing infrastructure.
-
-## Resources
-
-Check out a few resources that may come in handy when working with NestJS:
-
-- Visit the [NestJS Documentation](https://docs.nestjs.com) to learn more about the framework.
-- For questions and support, please visit our [Discord channel](https://discord.gg/G7Qnnhy).
-- To dive deeper and get more hands-on experience, check out our official video [courses](https://courses.nestjs.com/).
-- Deploy your application to AWS with the help of [NestJS Mau](https://mau.nestjs.com) in just a few clicks.
-- Visualize your application graph and interact with the NestJS application in real-time using [NestJS Devtools](https://devtools.nestjs.com).
-- Need help with your project (part-time to full-time)? Check out our official [enterprise support](https://enterprise.nestjs.com).
-- To stay in the loop and get updates, follow us on [X](https://x.com/nestframework) and [LinkedIn](https://linkedin.com/company/nestjs).
-- Looking for a job, or have a job to offer? Check out our official [Jobs board](https://jobs.nestjs.com).
-
-## Support
-
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+subscribeRandomNumber: Client subscribes to the random number stream.
+subscribeBitcoinPrice: Client subscribes to the Bitcoin price stream.
+unsubscribeRandomNumber: Client unsubscribes from the random number stream.
+unsubscribeBitcoinPrice: Client unsubscribes from the Bitcoin price stream.
+Notes
+Error Handling: In case of errors (e.g., network issues), the server will log messages and continue providing the last known data.
+Scalability: This architecture can be scaled horizontally to handle more clients by using Redis or other message brokers for Pub/Sub functionality.
 
 ## Stay in touch
 
