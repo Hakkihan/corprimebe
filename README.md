@@ -5,7 +5,7 @@
 [circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
 [circleci-url]: https://circleci.com/gh/nestjs/nest
 
- Data WebSocket Gateway
+
 Overview
 This project is a WebSocket-based application built using NestJS and Socket.IO. It allows clients to subscribe to real-time data streams for random numbers and Bitcoin prices, with updates sent at regular intervals.
 
