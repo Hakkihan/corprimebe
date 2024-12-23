@@ -7,7 +7,7 @@ export class DataModel {
 
   private lastBitcoinPrice: number;
 
-  // Fetch the latest Bitcoin price in USD
+  // Fetch the latest Bitcoin price in USD  
   async fetchBitcoinPrice(): Promise<number> {
     try {
       const response = await axios.get(COINGECKO_URL.BITCOIN_URL);
