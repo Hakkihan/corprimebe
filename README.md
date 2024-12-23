@@ -38,7 +38,6 @@ bash
 Copy code
 cd your-repository-name
 npm install
-# or
 yarn install
 Configure Environment Variables: Create a .env file in the root of the project and configure the necessary environment variables. An example .env file might look like this:
 
@@ -51,7 +50,6 @@ Run the Application: Start the NestJS server in development mode:
 bash
 Copy code
 npm run start:dev
-# or
 yarn start:dev
 The server will be available at http://localhost:3000.
 
@@ -100,12 +98,3 @@ Notes
 Error Handling: In case of errors (e.g., network issues), the server will log messages and continue providing the last known data.
 Scalability: This architecture can be scaled horizontally to handle more clients by using Redis or other message brokers for Pub/Sub functionality.
 
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
