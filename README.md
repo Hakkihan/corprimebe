@@ -41,60 +41,7 @@ This project is a WebSocket-based application built using **NestJS** and **Socke
    git clone https://github.com/your-username/your-repository-name.git
 Install Dependencies: Navigate to the project directory and install dependencies:
 
-bash
-cd your-repository-name
-npm install
-yarn install
-Configure Environment Variables: Create a .env file in the root of the project and configure the necessary environment variables. Example .env file:
-
-plaintext
-COINGECKO_URL=https://api.coingecko.com/api/v3
-SOCKET_PORT=3000
-Run the Application: Start the NestJS server in development mode:
-
-bash
- 
-npm run start:dev
-
-yarn start:dev
-The server will be available at http://localhost:3000.
-
-Test the WebSocket Connection:
-
-Open a WebSocket client or browser console and connect to the WebSocket server at ws://localhost:3000/data.
-Subscribe to the random number stream:
-js
- 
-socket.emit('subscribeRandomNumber');
-socket.on('randomNumber', (data) => {
-  console.log(data);
-});
-Subscribe to the Bitcoin price stream:
-js
- 
-socket.emit('subscribeBitcoinPrice');
-socket.on('bitcoinPrice', (data) => {
-  console.log(data);
-});
-Deployment
-You can deploy this application to a cloud service like Heroku, AWS, Vercel, or DigitalOcean.
-
-Deployment Steps:
-Set up environment variables on your cloud provider. This includes API URLs and any other secrets you need.
-
-Deploy:
-
-For Heroku:
-Push the project to your GitHub repository.
-Connect your GitHub repository to Heroku, and deploy the application.
-For AWS:
-Use AWS Lambda or EC2, and configure environment variables and the WebSocket service accordingly.
-For Vercel or Netlify:
-These platforms provide automated deployment from GitHub repositories. Set the appropriate environment variables in the platform’s dashboard.
-Production Configuration:
-CORS: In the production environment, ensure that your WebSocket server has the correct CORS settings to allow communication between the client and server.
-WebSocket Events
-The WebSocket server supports the following events:
+Simply npm install and then npm run dev should do the trick
 
 subscribeRandomNumber: Client subscribes to the random number stream.
 subscribeBitcoinPrice: Client subscribes to the Bitcoin price stream.
