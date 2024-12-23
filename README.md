@@ -1,7 +1,3 @@
-Sure! Here's a nicely formatted version of your README.md with proper headings, markdown syntax, and some styling elements to make it visually appealing:
-
-markdown
-Copy code
 <p align="center">
   <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
 </p>
@@ -46,23 +42,20 @@ This project is a WebSocket-based application built using **NestJS** and **Socke
 Install Dependencies: Navigate to the project directory and install dependencies:
 
 bash
-Copy code
 cd your-repository-name
 npm install
-# or
 yarn install
 Configure Environment Variables: Create a .env file in the root of the project and configure the necessary environment variables. Example .env file:
 
 plaintext
-Copy code
 COINGECKO_URL=https://api.coingecko.com/api/v3
 SOCKET_PORT=3000
 Run the Application: Start the NestJS server in development mode:
 
 bash
-Copy code
+ 
 npm run start:dev
-# or
+
 yarn start:dev
 The server will be available at http://localhost:3000.
 
@@ -71,14 +64,14 @@ Test the WebSocket Connection:
 Open a WebSocket client or browser console and connect to the WebSocket server at ws://localhost:3000/data.
 Subscribe to the random number stream:
 js
-Copy code
+ 
 socket.emit('subscribeRandomNumber');
 socket.on('randomNumber', (data) => {
   console.log(data);
 });
 Subscribe to the Bitcoin price stream:
 js
-Copy code
+ 
 socket.emit('subscribeBitcoinPrice');
 socket.on('bitcoinPrice', (data) => {
   console.log(data);
